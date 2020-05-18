@@ -1,0 +1,110 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80px;
+  background-color: #222;
+  padding: 20px;
+  padding-left: 10%;
+  color: #fff;
+}
+.header__logo{
+  width: 215px;
+}
+.header__title {
+  font-size: 17px;
+}
+.header__title a{
+  color: #fff
+}
+.header__title a:hover{
+  color: rgb(206, 205, 205);
+}
+.menu{
+  display: flex;
+  justify-content: space-around;
+  height: 40px;
+  margin-bottom: 30px;
+  background-color: #fff;
+}
+.menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  text-decoration: none;
+  border: 2px solid  #222;
+  border-bottom: 4px solid  #222;
+  font-size: 15px;
+  font-size: 1.2em;
+  color: #222;
+}
+.menu__link:hover{
+  background-color: rgb(206, 205, 205)
+}
+main{
+  padding: 20px;
+}
+.main-page{
+  display: flex;
+  justify-content: space-around;
+}
+.main-page__info, .main-page__picture{
+  width: 40%;
+}
+.main-page__info p{
+  font-size: 20px;
+  line-height: 26px;
+}
+.main-page__picture{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.main-page__picture img{
+  width: 80%;
+  margin: auto;
+}
+
+.App-label-news-card {
+  border: 1px solid #222;
+  padding: 10px 20px;
+}
+
+.App-link {
+  color: inherit;
+}
+
+.App-label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.App-input-field {
+  display: block;
+  width: 100%;
+  min-height: 20px;
+}
+
+.App-messages-box {
+  margin-bottom: 10px;
+  color: green;
+}
+
+.App-error-box {
+  margin-bottom: 10px;
+  color: red;
+}
+
+.App-delete-btn {
+  cursor: pointer;
+  text-decoration: underline;
+  color: red;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
