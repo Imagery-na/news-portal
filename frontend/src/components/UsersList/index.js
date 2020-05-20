@@ -12,7 +12,7 @@ class UsersList extends Component {
     render() {
         const { usersList } = this.props;
         return (
-        <main>
+        <main class="user-page">
             {!usersList ? null : usersList.map(user => (
             <UserCard key={user.id} {...user}/>))}
         </main>
