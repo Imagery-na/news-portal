@@ -10,11 +10,11 @@ class UsersList extends Component {
     }
 
     render() {
-        const { usersList } = this.props;
+        const { usersList, renderNewsOfAuthor } = this.props;
         return (
-        <main class="user-page">
+        <main className="user-page">
             {!usersList ? null : usersList.map(user => (
-            <UserCard key={user.id} {...user}/>))}
+            <UserCard key={user.id} renderNewsOfAuthor={renderNewsOfAuthor}{...user}/>))}
         </main>
         )
     }

@@ -4,4 +4,5 @@ export const apiUrl = 'http://portal';
 export const apiRoutes = {
     news: '/news',
     users: '/users',
+    newsOfAuthor: '/newsofauthor'
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Switch, Link } from 'react-router-dom'; //роутинг
-import createHistory from 'history/createHashHistory'
+import createHistory from 'history/createHashHistory';
 
 import { apiUrl, apiRoutes } from './apiConfig'; //работа с api
 
@@ -22,6 +22,7 @@ class App extends Component {
     this.state = {
       newsList: null,
       usersList: null,
+      newsOfAuthorList: null
     };
   }
 
@@ -57,6 +58,11 @@ class App extends Component {
     );
     
     return <NewsPage newsData={newsData} />
+  }
+
+  renderNewsOfAuthor = ( props ) => { //получает логин автора и возвращает статьи данного автора
+    const currentAuthor = props.match.params.login;
+    return <NewsList loadNews={this.loadNews} deleteNewsHandler={this.deleteNewsHandler} newsList={this.state.newsList} author = {currentAuthor}/>
   }
 
   addNewsCallback = (newNews) => { //чтобы не делать дополнительный запрос на сервер, этот метод добавит в хранилище добавленную новость из компонента NewsAdd
@@ -99,11 +105,10 @@ class App extends Component {
         </header>
 
         <Router history={history}>
-          <body>
-            
+          <div>           
             <nav className="menu">
               <Link className="menu__link" to='/'>Главная</Link>
-              <Link className="menu__link" to={apiRoutes.users}>Пользователи</Link>
+              <Link className="menu__link" to={apiRoutes.users}>Авторы</Link>
               <Link className="menu__link" to={apiRoutes.news}>Новости</Link>
             </nav>
             <Switch>
@@ -113,7 +118,7 @@ class App extends Component {
               </Route>
 
               <Route exact path={apiRoutes.users}>
-                <UsersList loadUsers={this.loadUsers} usersList={usersList} />
+                <UsersList loadUsers={this.loadUsers} renderNewsOfAuthor={this.renderNewsOfAuthor}usersList={usersList} />
               </Route>
             
               <Route exact path={apiRoutes.news}>
@@ -123,12 +128,18 @@ class App extends Component {
               <Route exact path={apiRoutes.news + '/add'}>
                 <NewsAdd addNewsCallback={this.addNewsCallback} />
               </Route>
+
+              <Route path={apiRoutes.news + '/author/:login'}>
+                <NewsList loadNews={this.renderNewsOfAuthor} deleteNewsHandler={this.deleteNewsHandler} 
+                newsList={this.state.newsOfAuthorList} />
+              </Route>
             
               <Route exact path={apiRoutes.news + '/:id'} component={this.renderSingleNews} /> 
+              <Route exact path={apiRoutes.newsOfAuthor + '/:login'} component={this.renderNewsOfAuthor} /> 
               
             </Switch>
 
-          </body>
+          </div>
         </Router>
 
       </div>
