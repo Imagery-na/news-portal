@@ -101,7 +101,7 @@ class App extends Component {
       <div>
         <header className="header">
           <img src={logoNews} className="header__logo" alt="news" title="news" />
-          <h1 className="header__title">News portal by <a href="https://imagery-na.github.io"> Imageryna</a> </h1>
+          <h1 className="header__title">News portal by <a href="https://imagery-na.github.io" targt="_blank"> Imageryna</a> </h1>
         </header>
 
         <Router history={history}>

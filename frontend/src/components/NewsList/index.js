@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import NewsCard from '../NewsCard';
 import { Link } from 'react-router-dom';
-
 import { apiRoutes } from '../../apiConfig';
+import addPict from '../../images/add.png';
 
 class NewsList extends Component {
 
@@ -17,17 +17,18 @@ class NewsList extends Component {
         const { newsList, deleteNewsHandler, author } = this.props;
         if (author==null){
             return (
-                <main>
+            <main>
                 <div>
-                    <Link className="App-link" to={apiRoutes.news + '/add'}>
-                        Добавить новость
-                    </Link>
-                    <h3>Список всех новостей:</h3>
+                    <div className="news-list__top">
+                        <h3>Все новости:</h3>
+                        <Link className="news-list__add-btn" to={apiRoutes.news + '/add'}>
+                        </Link>
+                    </div>
                     {!newsList ? null : newsList.map(news => (
                         <NewsCard key={news.id} deleteNewsHandler={deleteNewsHandler} {...news} />
                     ))}
                 </div>
-                </main>
+            </main>
             ) 
         } else {
             const newsOfAuthor = [];
@@ -41,10 +42,12 @@ class NewsList extends Component {
             return (
                 <main>
                 <div>
-                    <Link className="App-link" to={apiRoutes.news}>
-                       Посмотреть все новости
-                    </Link>
-                    <p>Статьи автора {author}</p>
+                    <div className="news-list__top">
+                        <h3>Статьи автора {author}</h3>
+                        <Link className="App-btn" to={apiRoutes.news}>
+                        Посмотреть все новости
+                        </Link>
+                    </div>
                     {!newsList ? null : newsList.filter(news => news.author == author).map(newsOfAuthor => (
                         <NewsCard key={newsOfAuthor.id} deleteNewsHandler={deleteNewsHandler} {...newsOfAuthor} />
                     ))}

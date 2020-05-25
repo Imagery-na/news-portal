@@ -92,15 +92,62 @@ main{
   align-items: center;
   width: 50%;
 }
-
-
-
-
-.App-label-news-card {
-  border: 1px solid #222;
-  padding: 10px 20px;
+.news-list__top{
+  padding: 20px;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
+.news-list__add-btn{
+  width: 50px;
+  height: 50px;
+  background-image: url(./images/add.png);
+  background-size: cover;
+}
+.news-list__add-btn:hover{
+  width: 52px;
+  height: 52px;
+  background-image: url(./images/add2.png);
+}
+.news-card {
+  border-bottom: 2px solid #222;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.news-card__picture{
+  width: 150px;
+  height: 100px;
+  margin: 10px;
+}
+.news-page{
+  display: flex;
+  justify-content: space-between;
+}
+.news-page__text{
+  width: 50%;
+  margin: 10px;
+}
+.news-page__picture{
+  width: 30%;
+  margin: 10px;
+}
+.App-btn{
+  padding: 10px;
+  background-color: #000;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fc0001;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.App-btn:hover{
+  cursor: pointer;
+  background-color: rgb(206, 205, 205);
+  color: #000;
+}
 .App-link {
   color: inherit;
 }
@@ -111,10 +158,15 @@ main{
 }
 
 .App-input-field {
+  font-family: sans-serif;
   display: block;
   width: 100%;
   min-height: 20px;
 }
+.App-label textarea{
+  min-height: 70px;
+  margin-bottom: 30px;
+} 
 
 .App-messages-box {
   margin-bottom: 10px;

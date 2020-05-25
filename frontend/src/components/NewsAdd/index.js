@@ -10,8 +10,9 @@ class NewsAdd extends Component {
             title: '',
             author: '',
             text: '',
+            picture: '',
             messages: '',
-            error: '',
+            error: ''
         }
     }
 
@@ -23,14 +24,15 @@ class NewsAdd extends Component {
     onSubmitHandler = (event) => {
         event.preventDefault(); //прерывает действие по умолчанию
 
-        const { title, author, text } = this.state;
+        const { title, author, text, picture } = this.state;
         const { addNewsCallback } = this.props; //получает метод добавления статей в список предка
-
-        if ([title, author, text].some(el => !el.length)) { 
+        const DateOfAdd = new Date();
+        console.log('picture '+picture);
+        if ([title, author, text, picture].some(el => !el.length)) { 
             return this.setState({error: 'Пожалуйста, заполните все поля', messages: ''});
         }
 
-        const requestUrl = apiUrl + apiRoutes.news + `?title=${title}&author=${author}&text=${text}`; // создаёт URL для обращения к серверу, куда помещает данные в query-параметры
+        const requestUrl = apiUrl + apiRoutes.news + `?title=${title}&author=${author}&text=${text}&picture=${picture}`; // создаёт URL для обращения к серверу, куда помещает данные в query-параметры
 
         fetch(requestUrl, {method: 'POST'}) //делает запрос к серверу с методом POST
             .then(res => {
@@ -48,6 +50,7 @@ class NewsAdd extends Component {
                     title: '',
                     author: '',
                     text: '',
+                    picture: '',
                     messages: 'Новость успешно добавлена!',
                     error: '',
                 });
@@ -58,8 +61,8 @@ class NewsAdd extends Component {
             });
     }
 
-    render() {
-        const { title, author, text, messages, error } = this.state;
+    render(){
+        const { title, author, text, picture, messages, error } = this.state;
 
         return (
             <main>
@@ -99,6 +102,17 @@ class NewsAdd extends Component {
                     value={author}
                     />
                 </label>
+
+                <label className="App-label">
+                    Картинка:
+                    <input 
+                    className="App-input-field"
+                    name="picture"
+                    placeholder="Вставьте URL картинки"
+                    onChange={this.onChangeHandler}
+                    value={picture}
+                    />
+                </label>
                 
                 <label className="App-label">
                     Текст:
@@ -111,8 +125,8 @@ class NewsAdd extends Component {
                     />
                 </label>
                 
-                <button type="submit">
-                    Добавить
+                <button className="App-btn" type="submit">
+                    Опубликовать
                 </button>
             </form>
             </main>
