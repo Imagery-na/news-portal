@@ -91,6 +91,7 @@ main{
   display: flex;
   align-items: center;
   width: 50%;
+  padding: 10px 0;
 }
 .news-list__top{
   padding: 20px;
@@ -126,7 +127,7 @@ main{
   display: flex;
   justify-content: space-between;
 }
-.news-page__text{
+.news-page__info{
   width: 50%;
   margin: 10px;
 }
@@ -187,4 +188,36 @@ main{
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@media (orientation: portrait) {
+  .news-card, .news-page, .main-page, .user-page__user-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .news-card__info, .news-page__title{
+    text-align: center;
+  }
+  .news-card__picture, .news-page__picture{
+    width: 260px;
+    height: 170px;
+  }
+  .news-page__info, .main-page__info, .main-page__picture, .user-card__info{
+    width: 90%;
+    text-align: center;
+  }
+  .news-page__text, .main-page__text{
+    text-align: justify;
+  }
+  .news-of-author__top {
+    flex-direction: column-reverse;
+    align-items: center;
+    padding: 0;
+  }
+  .user-card__dopinfo{
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 100%;
+    text-align: justify;
+  }
 }
