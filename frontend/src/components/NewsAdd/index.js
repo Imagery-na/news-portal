@@ -19,6 +19,8 @@ class NewsAdd extends Component {
     onChangeHandler = (event) => {
         const { name, value } = event.currentTarget;
         this.setState({[name]: value});
+        const date1 = new Date().getMonth();
+        console.log(date1);
     }
 
     onSubmitHandler = (event) => {
@@ -26,13 +28,53 @@ class NewsAdd extends Component {
 
         const { title, author, text, picture } = this.state;
         const { addNewsCallback } = this.props; //получает метод добавления статей в список предка
-        const DateOfAdd = new Date();
-        console.log('picture '+picture);
+        const date = new Date();
+        let month = "месяц";
+        switch (date.getMonth()) {
+            case 0:
+                month = "января";
+                break;
+            case 1:
+                month = "февраля";
+                break;
+            case 2:
+                month = "марта";
+                break;
+            case 3:
+                month = "апреля";
+                break;
+            case 4:
+                month = "мая";
+                break;
+            case 5:
+                month = "июня";
+                break;
+            case 6:
+                month = "июля";
+                break;
+            case 7:
+                month = "августа";
+                break;  
+            case 8:
+                month = "сентября";
+                break;
+            case 9:
+                month = "октября";
+                break;
+            case 10:
+                month = "ноября";
+                break;
+            case 11:
+                month = "декабря";
+                break;   
+        }              
+        const DateOfAdd = date.getDate()+" "+month+" "+date.getFullYear();
+        console.log('DateOfAdd '+DateOfAdd);
         if ([title, author, text, picture].some(el => !el.length)) { 
             return this.setState({error: 'Пожалуйста, заполните все поля', messages: ''});
         }
 
-        const requestUrl = apiUrl + apiRoutes.news + `?title=${title}&author=${author}&text=${text}&picture=${picture}`; // создаёт URL для обращения к серверу, куда помещает данные в query-параметры
+        const requestUrl = apiUrl + apiRoutes.news + `?title=${title}&author=${author}&text=${text}&picture=${picture}&date=${DateOfAdd}`; // создаёт URL для обращения к серверу, куда помещает данные в query-параметры
 
         fetch(requestUrl, {method: 'POST'}) //делает запрос к серверу с методом POST
             .then(res => {

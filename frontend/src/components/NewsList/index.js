@@ -43,7 +43,7 @@ class NewsList extends Component {
                 <main>
                 <div>
                     <div className="news-list__top">
-                        <h3>Статьи автора {author}</h3>
+                        <h3>Статьи автора {author}:</h3>
                         <Link className="App-btn" to={apiRoutes.news}>
                         Посмотреть все новости
                         </Link>
