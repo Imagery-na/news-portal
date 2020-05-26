@@ -39,6 +39,7 @@ function postData($route, $params = []) {
                 'text' => $params['text'],
                 'author' => $params['author'],
                 'picture' => $params['picture'],
+                'date' => $params['date']
             ];
 
             break;
@@ -64,8 +65,9 @@ function postData($route, $params = []) {
     $newText=$newData['text'];
     $newAuthor=$newData['author'];
     $newPicture=$newData['picture'];
+    $newDate=$newData['date'];
     echo $newID;
-    $addData=mysqli_query($connection, "INSERT INTO `$route` VALUES (DEFAULT, '$newTitle', '$newText', '$newAuthor', '$newPicture')");
+    $addData=mysqli_query($connection, "INSERT INTO `$route` VALUES (DEFAULT, '$newTitle', '$newText', '$newAuthor', '$newPicture', '$newDate')");
     $newData['id'] = mysqli_insert_id($connection);
     $data[] = $newData;
     return $newData;
